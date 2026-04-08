@@ -14,6 +14,22 @@ ingredients:
 
 合法 `category` 值：`dairy`、`vegetables`、`fruits`、`meat`、`snacks`、`condiments`、`other`。
 
+## 食譜更新後推上 GitHub
+
+僅針對 `src/recipes/` 變更：自動 `git add` → `commit` → `push` 到目前分支的 `origin`（需已設定遠端與推送權限）。
+
+```bash
+npm run recipes:push
+```
+
+自訂 commit 訊息：
+
+```bash
+npm run recipes:push -- "feat: 新增番茄炒蛋"
+```
+
+若該目錄無變更，指令會直接結束、不會建立空 commit。
+
 ## 本機開發
 
 ```bash
