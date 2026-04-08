@@ -56,7 +56,7 @@ PWA 在 **HTTPS 或 localhost** 下可測試安裝與離線；iPhone 請用 Safa
    ```
 
 2. **在網頁上新增 workflow**  
-   複製 [`docs/github-pages-workflow.yml`](docs/github-pages-workflow.yml) 全文，到 GitHub 倉庫 **Add file → Create new file**，路徑填 **`.github/workflows/deploy-github-pages.yml`**，貼上後 Commit。
+   複製 [`docs/github-pages-workflow.yml`](docs/github-pages-workflow.yml) 全文，到倉庫 [新增檔案（預填路徑）](https://github.com/leonardo101101078-beep/kitchen-shopping-helper/new/main?filename=.github%2Fworkflows%2Fdeploy-github-pages.yml) 貼上後 Commit；或 **Add file → Create new file**，路徑填 **`.github/workflows/deploy-github-pages.yml`**。
 
 ### 開啟 Pages
 
