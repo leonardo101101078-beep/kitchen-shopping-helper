@@ -40,6 +40,8 @@ PWA 在 **HTTPS 或 localhost** 下可測試安裝與離線；iPhone 請用 Safa
 
 `https://leonardo101101078-beep.github.io/kitchen-shopping-helper/`
 
+**倉庫端已啟用 Pages（建置來源：GitHub Actions / `workflow`）**；尚須把 **`.github/workflows/deploy-github-pages.yml`** 推上 `main`（或於網頁建立同名檔），Actions 才會開始建置。
+
 ### 啟用自動部署（Actions）
 
 預設的 GitHub CLI token 常**無法推送** `.github/workflows/`（需 `workflow` 權限）。擇一即可：
@@ -58,9 +60,9 @@ PWA 在 **HTTPS 或 localhost** 下可測試安裝與離線；iPhone 請用 Safa
 2. **在網頁上新增 workflow**  
    複製 [`docs/github-pages-workflow.yml`](docs/github-pages-workflow.yml) 全文，到倉庫 [新增檔案（預填路徑）](https://github.com/leonardo101101078-beep/kitchen-shopping-helper/new/main?filename=.github%2Fworkflows%2Fdeploy-github-pages.yml) 貼上後 Commit；或 **Add file → Create new file**，路徑填 **`.github/workflows/deploy-github-pages.yml`**。
 
-### 開啟 Pages
+### 確認 Pages 設定
 
-倉庫 **Settings → Pages → Build and deployment**：**Source** 選 **GitHub Actions**（不要選 Deploy from a branch）。workflow 跑成功後即可開啟上述網址。
+若 **Settings → Pages** 的 **Source** 已是 **GitHub Actions**，無須再改。workflow 首次成功執行後，網站才會出現於上述網址。
 
 本機用子路徑預覽：`VITE_BASE=/kitchen-shopping-helper/ npm run build && npm run preview`（依你的 repo 名稱調整）。
 
