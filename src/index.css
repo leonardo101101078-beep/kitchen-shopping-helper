@@ -1,0 +1,226 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-cream: #f9f7e8;
+  --color-cream-deep: #f5f2e1;
+  --color-cream-card: #fcfaf3;
+  --color-olive: #6b705c;
+  --color-olive-deep: #555b4e;
+  --color-olive-muted: #8a8f7e;
+  --color-paper-edge: #d4cfc0;
+  --color-warm-surface: #fdfcf7;
+}
+
+:root {
+  --lp-bg-image: url('/bg-kitchen-portrait.png');
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes lp-bg-drift {
+  from {
+    transform: translate(0, 0) scale(1.06);
+  }
+  to {
+    transform: translate(-1.8%, 1.2%) scale(1.1);
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: -8%;
+  z-index: 0;
+  background-image: var(--lp-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  pointer-events: none;
+  animation: lp-bg-drift 80s ease-in-out infinite alternate;
+}
+
+body {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: 0.02em;
+  @apply min-h-dvh antialiased;
+  background-color: var(--color-cream);
+  color: var(--color-olive-deep);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+.font-display {
+  font-family:
+    'Playfair Display',
+    Georgia,
+    'Times New Roman',
+    serif;
+}
+
+@keyframes lp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lp-soft-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: lp-fade-up 0.5s ease-out both;
+}
+
+.animate-soft-in {
+  animation: lp-soft-in 0.45s ease-out both;
+}
+
+.lp-card {
+  border-radius: 28px;
+  border: 1px solid var(--color-paper-edge);
+  background: var(--color-cream-card);
+  box-shadow: none;
+}
+
+.lp-btn-pill {
+  border-radius: 9999px;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.lp-btn-pill:active {
+  transform: scale(0.98);
+}
+
+.lp-checkbox {
+  accent-color: var(--color-olive);
+}
+
+.prose-recipe {
+  color: var(--color-olive-deep);
+}
+
+.prose-recipe h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* A3: keyboard focus — does not affect mouse clicks */
+:where(
+  button,
+  input:not([type='hidden']),
+  select,
+  textarea,
+  summary,
+  [href],
+  [tabindex]:not([tabindex='-1'])
+):focus {
+  outline: none;
+}
+
+:where(
+  button,
+  input:not([type='hidden']),
+  select,
+  textarea,
+  summary,
+  [href],
+  [tabindex]:not([tabindex='-1'])
+):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-olive) 42%, transparent);
+  outline-offset: 3px;
+}
+
+/* E1: animated strikethrough for shopping lines */
+.lp-strike-wrap {
+  position: relative;
+  display: inline;
+  text-decoration: none;
+}
+
+.lp-strike-wrap:not([data-bought='true']) {
+  color: var(--color-olive-deep);
+}
+
+.lp-strike-wrap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  height: max(1px, 0.065em);
+  background: currentColor;
+  opacity: 0.72;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s ease-out;
+}
+
+.lp-strike-wrap[data-bought='true'] {
+  color: var(--color-olive-muted);
+}
+
+.lp-strike-wrap[data-bought='true']::after {
+  transform: scaleX(1);
+}
+
+/* G1: sticky category heading inside scroll */
+.lp-shop-category-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-paper-edge);
+  background-color: color-mix(in srgb, var(--color-cream-card) 92%, transparent);
+  padding-top: 0.35rem;
+  padding-bottom: 0.5rem;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .lp-shop-category-sticky {
+    background-color: var(--color-cream-card);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  body::before {
+    animation: none !important;
+  }
+}
