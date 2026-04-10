@@ -1,6 +1,6 @@
 ---
 id: chinese-boiled-okra
-cuisine: chinese
+cuisine: fusion
 name: 水煮秋葵
 ingredients:
   - { item: "秋葵", amount: "200-300 克", category: vegetables }

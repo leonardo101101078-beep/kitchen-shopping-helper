@@ -1,6 +1,6 @@
 ---
 id: chinese-boiled-broccoli
-cuisine: chinese
+cuisine: fusion
 name: 水煮西蘭花
 ingredients:
   - { item: "西蘭花", amount: "1 顆", category: vegetables }

@@ -1,6 +1,6 @@
 ---
 id: chinese-boiled-chicken-breast
-cuisine: chinese
+cuisine: fusion
 name: 水煮雞胸肉
 ingredients:
   - { item: "雞胸肉", amount: "1-2 片", category: meat }

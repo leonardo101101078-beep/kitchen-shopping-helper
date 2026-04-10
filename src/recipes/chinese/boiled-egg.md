@@ -1,6 +1,6 @@
 ---
 id: chinese-boiled-egg
-cuisine: chinese
+cuisine: fusion
 name: 水煮蛋
 ingredients:
   - { item: "雞蛋", amount: "2-4 顆", category: dairy }
